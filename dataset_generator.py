@@ -1,7 +1,10 @@
 import os
+import sys
 import boto3
 import unzip
 from kaggle.api.kaggle_api_extended import KaggleApi
+
+from configs.dataconfig import DATASET_IDENTIFIER
 
 # Initialize Kaggle API
 api = KaggleApi()
@@ -12,8 +15,8 @@ base_path = os.path.dirname(os.path.abspath(__file__))
 new_path = os.path.join(base_path, "data")
 
 # Download dataset to the specified path
-api.dataset_download_files("oktayrdeki/traffic-accidents", path=new_path, unzip=True)
-api.dataset_download_files("anandshaw2001/netflix-movies-and-tv-shows", path=new_path, unzip=True)
+for dataset in DATASET_IDENTIFIER:
+    api.dataset_download_files(dataset, path=new_path, unzip=True)
 
 print(f"Dataset downloaded to: {new_path}")
 
