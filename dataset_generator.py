@@ -4,7 +4,7 @@ import boto3
 import unzip
 from kaggle.api.kaggle_api_extended import KaggleApi
 
-from configs.dataconfig import DATASET_IDENTIFIER
+from configs.dataconfig import DATASET_IDENTIFIER, bucket_name, s3_directory
 
 # Initialize Kaggle API
 api = KaggleApi()
@@ -36,11 +36,10 @@ def upload_to_s3(new_path, bucket_name, s3_directory):
     # Upload the dataset to S3
     for root, dirs, files in os.walk(new_path):
         for file in files:
-            s3.upload_file(os.path.join(root, file), bucket_name, file)
+            s3_path = os.path.join(s3_directory, file)
+            s3.upload_file(os.path.join(root, file), bucket_name, s3_path)
             print(f"Uploaded {file} to S3")
 
 
 # Upload the dataset to S3
-bucket_name = "traffic-accidents-raw-data"
-s3_directory = "raw-data"
 upload_to_s3(new_path, bucket_name, s3_directory)
