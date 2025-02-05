@@ -4,7 +4,7 @@ import boto3
 import unzip
 from kaggle.api.kaggle_api_extended import KaggleApi
 
-from configs.dataconfig import DATASET_IDENTIFIER, bucket_name, s3_directory
+from configs.data_config import DATASET_IDENTIFIER, bucket_name, s3_directory
 
 # Initialize Kaggle API
 api = KaggleApi()

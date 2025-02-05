@@ -19,7 +19,7 @@ This project aims to analyze traffic accident data to identify patterns and insi
 ### Installation
 
 Create a virtual environment and activate it
- - pipenv install shell 
+ - pipenv shell 
  - pipenv install boto3 requests unzip 
   
 Set up Kaggle API credentials

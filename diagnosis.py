@@ -1,7 +1,7 @@
 import boto3
 import time
 from botocore.exceptions import ClientError
-from configs.dataconfig import (
+from configs.data_config import (
     DATASET_IDENTIFIER,
     bucket_name,
     s3_directory,
